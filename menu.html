@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="Café de Source - Our Complete Menu">
+        <meta name="author" content="Café de Source">
+
+        <title>Café de Source - Menu</title>
+
+        <!-- CSS FILES -->                
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <!-- Café de Source Custom Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+            
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/tooplate-barista.css" rel="stylesheet">
+        
+        <style>
+            /* Menu Page Specific Styles */
+            body {
+                background: linear-gradient(135deg, 
+                    var(--dark-chocolate-brown) 0%, 
+                    var(--deep-coffee-brown) 100%);
+                min-height: 100vh;
+            }
+
+            .menu-page-wrapper {
+                padding: 60px 0;
+            }
+
+            .menu-header {
+                text-align: center;
+                margin-bottom: 60px;
+                padding: 40px 20px;
+            }
+
+            .menu-header em {
+                color: var(--warm-wheat-beige);
+                font-size: 16px;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                font-weight: 600;
+                display: block;
+                margin-bottom: 15px;
+            }
+
+            .menu-header h1 {
+                color: var(--milk-foam-cream);
+                font-family: var(--heading-font-family);
+                font-size: 56px;
+                margin-bottom: 20px;
+                text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .menu-header p {
+                color: var(--latte-cream-beige);
+                font-size: 20px;
+                max-width: 600px;
+                margin: 0 auto;
+                line-height: 1.7;
+            }
+
+            .menu-divider {
+                width: 80px;
+                height: 3px;
+                background: linear-gradient(90deg, 
+                    var(--cafe-red) 0%, 
+                    var(--warm-wheat-beige) 100%);
+                margin: 30px auto;
+                border-radius: 10px;
+            }
+
+            .menu-section {
+                margin-bottom: 80px;
+            }
+
+            .menu-section-title {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .menu-section-title h2 {
+                color: var(--milk-foam-cream);
+                font-family: var(--heading-font-family);
+                font-size: 40px;
+                margin-bottom: 10px;
+            }
+
+            .menu-section-title p {
+                color: var(--latte-cream-beige);
+                font-size: 18px;
+                font-style: italic;
+            }
+
+            .menu-image-card {
+                background: linear-gradient(135deg, 
+                    rgba(90, 58, 36, 0.95) 0%, 
+                    rgba(59, 42, 30, 0.95) 100%);
+                border-radius: var(--border-radius-medium);
+                overflow: hidden;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+                border: 2px solid rgba(212, 176, 138, 0.2);
+                transition: all 0.4s ease;
+                margin-bottom: 30px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-image-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+                border-color: var(--warm-wheat-beige);
+            }
+
+            .menu-image-wrapper {
+                position: relative;
+                width: 100%;
+                padding-top: 75%; /* 4:3 Aspect Ratio */
+                overflow: hidden;
+                background: var(--roasted-bean-brown);
+            }
+
+            .menu-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.4s ease;
+            }
+
+            .menu-image-card:hover .menu-image {
+                transform: scale(1.1);
+            }
+
+            .menu-image-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(to bottom, 
+                    rgba(42, 28, 20, 0) 0%, 
+                    rgba(42, 28, 20, 0.7) 100%);
+                pointer-events: none;
+            }
+
+            .menu-card-content {
+                padding: 30px;
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-card-title {
+                color: var(--milk-foam-cream);
+                font-family: var(--heading-font-family);
+                font-size: 28px;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            .menu-card-description {
+                color: var(--latte-cream-beige);
+                font-size: 16px;
+                line-height: 1.7;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .menu-badge {
+                display: inline-block;
+                background: var(--cafe-red);
+                color: var(--white-color);
+                padding: 6px 15px;
+                border-radius: 20px;
+                font-size: 13px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin: 10px auto 0;
+            }
+
+            .back-to-home {
+                text-align: center;
+                margin-top: 60px;
+                padding: 40px 20px;
+            }
+
+            .back-to-home .btn {
+                padding: 15px 40px;
+                font-size: 18px;
+            }
+
+            /* Responsive Design */
+            @media screen and (max-width: 991px) {
+                .menu-header h1 {
+                    font-size: 42px;
+                }
+
+                .menu-section-title h2 {
+                    font-size: 32px;
+                }
+
+                .menu-card-title {
+                    font-size: 24px;
+                }
+
+                .menu-page-wrapper {
+                    padding: 40px 0;
+                }
+
+                .menu-section {
+                    margin-bottom: 50px;
+                }
+            }
+
+            @media screen and (max-width: 767px) {
+                .menu-header h1 {
+                    font-size: 36px;
+                }
+
+                .menu-header p {
+                    font-size: 16px;
+                }
+
+                .menu-section-title h2 {
+                    font-size: 28px;
+                }
+
+                .menu-card-content {
+                    padding: 20px;
+                }
+
+                .menu-card-title {
+                    font-size: 22px;
+                }
+
+                .menu-card-description {
+                    font-size: 15px;
+                }
+            }
+
+            @media screen and (max-width: 576px) {
+                .menu-header {
+                    padding: 20px 15px;
+                    margin-bottom: 40px;
+                }
+
+                .menu-header h1 {
+                    font-size: 32px;
+                }
+
+                .menu-page-wrapper {
+                    padding: 30px 0;
+                }
+            }
+        </style>
+    </head>
+    
+    <body>
+        <main class="menu-page-wrapper">
+            <div class="container">
+                <!-- Menu Header -->
+                <div class="menu-header">
+                    <em>Café de Source</em>
+                    <h1>Our Menu</h1>
+                    <div class="menu-divider"></div>
+                    <p>Explore our carefully crafted selection of premium coffees, artisan teas, and homemade pastries</p>
+                </div>
+
+                <!-- Menu Sections -->
+                <div class="row">
+                    <!-- Coffee Menu -->
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="menu-image-card">
+                            <div class="menu-image-wrapper">
+                                <img src="images/menu/coffee_menu.png" alt="Coffee Menu" class="menu-image">
+                                <div class="menu-image-overlay"></div>
+                            </div>
+                            <div class="menu-card-content">
+                                <h3 class="menu-card-title">Coffee Menu</h3>
+                                <p class="menu-card-description">
+                                    Discover our signature coffee collection, from classic espresso to specialty lattes. Each cup is crafted with premium beans and expert care.
+                                </p>
+                                <div class="menu-badge">Most Popular</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tea Menu -->
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="menu-image-card">
+                            <div class="menu-image-wrapper">
+                                <img src="images/menu/tea_menu.png" alt="Tea Menu" class="menu-image">
+                                <div class="menu-image-overlay"></div>
+                            </div>
+                            <div class="menu-card-content">
+                                <h3 class="menu-card-title">Tea Selection</h3>
+                                <p class="menu-card-description">
+                                    Experience our curated tea collection featuring premium green, black, and herbal teas sourced from the finest gardens worldwide.
+                                </p>
+                                <div class="menu-badge">Premium Blends</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cake Menu -->
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="menu-image-card">
+                            <div class="menu-image-wrapper">
+                                <img src="images/menu/cake_menu.jpg" alt="Cake & Pastries Menu" class="menu-image">
+                                <div class="menu-image-overlay"></div>
+                            </div>
+                            <div class="menu-card-content">
+                                <h3 class="menu-card-title">Cakes & Pastries</h3>
+                                <p class="menu-card-description">
+                                    Indulge in our freshly baked cakes and pastries. From classic croissants to decadent chocolate cake, baked fresh daily.
+                                </p>
+                                <div class="menu-badge">Freshly Baked</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back to Home -->
+                <div class="back-to-home">
+                    <a href="index.html" class="btn custom-btn">
+                        <i class="bi bi-arrow-left me-2"></i>Back to Home
+                    </a>
+                    <p style="color: var(--latte-cream-beige); margin-top: 20px; font-size: 14px;">
+                        <i class="bi bi-info-circle me-2"></i>Click on images to view full menu details
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>

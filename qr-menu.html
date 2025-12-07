@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="Café de Source - Scan to view our latest menu">
+        <meta name="author" content="Café de Source">
+
+        <title>Café de Source - Digital Menu</title>
+
+        <!-- CSS FILES -->                
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <!-- Café de Source Custom Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+            
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/tooplate-barista.css" rel="stylesheet">
+        
+        <!-- QRCode.js Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+        
+        <style>
+            /* QR Menu Page Specific Styles */
+            .qr-menu-page {
+                background: linear-gradient(135deg, 
+                    var(--dark-chocolate-brown) 0%, 
+                    var(--deep-coffee-brown) 50%,
+                    var(--roasted-bean-brown) 100%);
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 40px 20px;
+            }
+
+            .qr-container {
+                background: linear-gradient(135deg, 
+                    rgba(90, 58, 36, 0.95) 0%, 
+                    rgba(59, 42, 30, 0.95) 100%);
+                border-radius: var(--border-radius-medium);
+                padding: 60px 40px;
+                max-width: 600px;
+                width: 100%;
+                text-align: center;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+                border: 2px solid rgba(212, 176, 138, 0.3);
+            }
+
+            .qr-header {
+                margin-bottom: 40px;
+            }
+
+            .qr-header h1 {
+                color: var(--milk-foam-cream);
+                font-family: var(--heading-font-family);
+                font-size: 42px;
+                margin-bottom: 15px;
+                text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .qr-header p {
+                color: var(--latte-cream-beige);
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .qr-header em {
+                color: var(--warm-wheat-beige);
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-weight: 600;
+                display: block;
+                margin-bottom: 20px;
+            }
+
+            .qr-code-wrapper {
+                background: var(--white-color);
+                padding: 30px;
+                border-radius: var(--border-radius-medium);
+                display: inline-block;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                border: 3px solid var(--warm-wheat-beige);
+                margin-bottom: 30px;
+            }
+
+            .qr-code-placeholder {
+                width: 300px;
+                height: 300px;
+                background: var(--white-color);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                color: #6c757d;
+                font-family: var(--body-font-family);
+                text-align: center;
+                padding: 20px;
+            }
+
+            /* QR Code Canvas Styling */
+            #qrcode {
+                display: inline-block;
+            }
+
+            #qrcode canvas {
+                border-radius: 10px;
+            }
+
+            .qr-instructions {
+                color: var(--latte-cream-beige);
+                font-size: 16px;
+                margin-top: 20px;
+                padding: 20px;
+                background: rgba(42, 28, 20, 0.4);
+                border-radius: 10px;
+                border: 1px solid rgba(212, 176, 138, 0.2);
+            }
+
+            .qr-instructions i {
+                color: var(--warm-wheat-beige);
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .back-btn {
+                margin-top: 30px;
+            }
+
+            @media screen and (max-width: 576px) {
+                .qr-container {
+                    padding: 40px 25px;
+                }
+
+                .qr-header h1 {
+                    font-size: 32px;
+                }
+
+                .qr-code-placeholder,
+                #qrcode canvas {
+                    width: 250px !important;
+                    height: 250px !important;
+                }
+
+                .qr-code-wrapper {
+                    padding: 20px;
+                }
+            }
+        </style>
+    </head>
+    
+    <body>
+        <main class="qr-menu-page">
+            <div class="qr-container">
+                <div class="qr-header">
+                    <em>Café de Source</em>
+                    <h1>Digital Menu</h1>
+                    <p>Scan to View Our Latest Menu</p>
+                </div>
+
+                <div class="qr-code-wrapper">
+                    <!-- QR Code will be generated here dynamically -->
+                    <div id="qrcode"></div>
+                </div>
+
+                <div class="qr-instructions">
+                    <i class="bi bi-phone d-block"></i>
+                    <p style="margin: 0; line-height: 1.7;">
+                        <strong style="color: var(--milk-foam-cream);">How to scan:</strong><br>
+                        Open your phone's camera and point it at the QR code.<br>
+                        Tap the notification to view our digital menu instantly.
+                    </p>
+                </div>
+
+                <div class="back-btn">
+                    <a href="index.html" class="btn custom-btn">
+                        <i class="bi bi-arrow-left me-2"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        
+        <!-- Generate QR Code -->
+        <script>
+            // Wait for DOM to be ready
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get the current domain and create the menu URL
+                var protocol = window.location.protocol; // http: or https:
+                var host = window.location.host; // domain and port
+                var menuUrl = protocol + '//' + host + window.location.pathname.replace('qr-menu.html', 'menu.html');
+                
+                // For local development, you can use a full URL
+                // For production, the above will work automatically
+                
+                // Create QR Code
+                var qrcode = new QRCode(document.getElementById("qrcode"), {
+                    text: menuUrl,
+                    width: 300,
+                    height: 300,
+                    colorDark: "#2A1C14", // Dark chocolate brown
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H // High error correction
+                });
+                
+                // Log the URL for debugging
+                console.log("QR Code generated for: " + menuUrl);
+            });
+        </script>
+    </body>
+</html>
