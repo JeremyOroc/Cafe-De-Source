@@ -47,7 +47,7 @@ export default function QRCodeGenerator({ url }: { url: string }) {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
+      <div className="bg-white p-8 rounded-xl shadow-2xl border-4 border-cafe-cream-warm">
         <canvas ref={canvasRef} className="max-w-full h-auto" />
       </div>
 
@@ -55,13 +55,14 @@ export default function QRCodeGenerator({ url }: { url: string }) {
         <button
           onClick={downloadQR}
           disabled={!qrDataUrl}
-          className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-4 bg-cafe-red text-white rounded-lg hover:bg-cafe-red/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl font-semibold"
         >
           Download QR Code
         </button>
 
-        <div className="text-sm text-center text-gray-600 dark:text-gray-400">
-          Scan to visit: <span className="font-mono">{url}</span>
+        <div className="text-sm text-center text-cafe-cream-latte bg-cafe-brown-roasted p-4 rounded-lg">
+          <span className="block text-cafe-cream-foam font-semibold mb-1">Scan to visit:</span>
+          <span className="font-mono text-xs break-all">{url}</span>
         </div>
       </div>
     </div>

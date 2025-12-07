@@ -7,7 +7,25 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        cafe: {
+          brown: {
+            deep: '#3B2A1E',
+            dark: '#2A1C14',
+            roasted: '#5A3A24',
+            caramel: '#A0714F',
+          },
+          cream: {
+            latte: '#D4B08A',
+            foam: '#F4E3C3',
+            warm: '#CFA570',
+          },
+          wood: '#D1B79C',
+          red: '#C4493A',
+        },
+      },
+    },
   },
   plugins: [],
 }

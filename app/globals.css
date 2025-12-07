@@ -3,18 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 59, 42, 30;
   --background-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-rgb: 18, 18, 18;
+    --foreground-rgb: 244, 227, 195;
+    --background-rgb: 42, 28, 20;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+}
+
+@layer base {
+  * {
+    @apply scroll-smooth;
+  }
 }
